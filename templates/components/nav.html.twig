@@ -1,0 +1,92 @@
+<div>
+    <div>
+        <nav class="navbar navbar-expand-lg" style="background-color: #A97153;">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+                    <ul class="navbar-nav d-flex align-items-center" style="color: #F2EDE4;margin-left:20px">
+                        06 00 00 00 00
+                        <p>&nbsp;</p>
+                    </ul>
+                    <div class="d-flex justify-content-end align-items-center" style="margin-right:20px">
+                    
+                    {% if not app.user %}
+                    <a style="text-decoration:none; color: #F2EDE4" href="{{ path('security_login')}}">Connexion</a>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                    <a href="{{ path('security_registration')}}" style="text-decoration:none; color: #F2EDE4">Inscription</a>
+                    {% else %}
+                        <a href="{{ path('security_logout')}}" style="text-decoration:none; color: #F2EDE4">Déconnexion</a>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <a href="{{ path('app_account') }}" class="nav-link active" aria-current="page">{{app.user.firstname}}</a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <a class="dropdown-item" href="{{ path('admin') }}">Back-Office</a>
+                        {% endif %}
+                    {% endif %}
+                        </ul>
+                    
+        </li>
+      </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+
+    <div style="display: flex; justify-content:space-between;align-items: stretch;">
+        <div>
+            <a href="{{ path('app_home') }}" style="color: #8c4637;text-decoration:none;display:flex;align-items:center;">
+                <p style="font-weight: bold; font-size: 35px;padding-left:20px">LORRAIN BENOÎT</p>
+                <p style="font-weight: bold; font-size: 20px;padding-left:10px">Thérapeute à Paris</p>
+            </a>
+        </div>
+        <nav class="navbar navbar-expand-lg" style="background-color: #D9B391;border-radius: 0px 0px 30px 30px;">
+            <div class="container-fluid " >
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarNav" >
+                    <ul class="navbar-nav" >
+                        <div  style="display: flex; align-items:center;justify-content:space-around">
+                                
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: #F2EDE4; border-right: solid 2px #A97153;" href="{{ path('app_home') }}">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: #F2EDE4; border-right: solid 2px #A97153;" href="{{ path('app_services') }}">Prestations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: #F2EDE4; border-right: solid 2px #A97153;" href="{{ path('app_about_me') }}">Qui suis-je ?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: #F2EDE4; border-right: solid 2px #A97153;" href="{{ path('app_blog_list') }}">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: #F2EDE4;" href="{{ path('app_contact') }}">Contact</a>
+                            </li>
+                        </div>
+                        
+                        <li class="nav-item" style="background-color: #8C4637;border-radius: 30px; margin: 5px">
+                            <a class="nav-link disabled" style="color: #F2EDE4;" href="#">Réservez votre RDV</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+
+
+
+
+
+
+</div>

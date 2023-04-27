@@ -1,0 +1,154 @@
+/* Section presentation */
+
+
+#presentation{
+    text-align: center;
+    color: #8c4637;
+    box-shadow: inset 0 0 0 1000px rgba(242,237,228,0.7);
+    background-image: url("https://cdn.unenvironment.org/events/2021-03/Economia%20circular%20foto%20tema%CC%81tica.jpg?VersionId=null") ;
+    background-size: cover;  
+    margin-top: -70px; 
+    padding-top: 100px;
+    padding-bottom:50px;
+}
+
+#presentation p{
+    text-align: center;
+    font-size: 1.2em;  
+}
+
+#presentation i{
+    text-align: center;
+    font-size: 5em;
+}
+
+#presentation a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: auto;
+    width: 330px;
+    height: 60px;
+    background-color: #8C4637;
+    border-radius: 20px;
+    font-size: 1.6em;
+}
+
+#presentation a:hover{
+    box-shadow: inset 0 0 0 1000px #623227;
+}
+
+#QUI_SUIS_JE{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#titre_presentation{
+    margin: -15px;
+    font-size: 4em;
+}
+
+
+/* Section prestations */
+
+#prestation{
+    background-color: #F2EDE4;
+    height: 1020px;
+}
+
+#section_prestations{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#prestation h2{
+    text-align: center;
+    color: #8c4637;
+    padding-top: 40px;
+}
+
+#therapie_placeholder{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    padding: 1.3em;
+    border-radius: 30px;
+}
+
+#desc_therapie_index{
+    padding: 10px;
+}
+
+#desc_therapie_index h4{
+    color: #d9b391;
+}
+
+#button_EN_SAVOIR_PLUS{
+    color: #F2EDE4;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+    background-color: #d9b391;
+    border-radius: 30px;
+    max-width: 9.4em ;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#button_EN_SAVOIR_PLUS:hover{
+    background-color: #bf895a;
+}
+
+#illu_therapie{
+    max-height: 12em;
+    max-width: 18em;
+    
+    border-radius: 30px;
+    border: 0.5rem solid #623227;
+}
+
+#big_button a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 330px;
+    height: 60px;
+    background-color: #8C4637;
+    border-radius: 20px;
+    font-size: 1.6em;
+}
+
+#big_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+    padding-top: 20px;
+}
+
+
+/* Section articles */
+
+#derniers_articles{
+    background-color: #BF895A;
+    height: 1020px;
+}
+
+#section_prestations{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#derniers_articles h2{
+    text-align: center;
+    color: #F2EDE4;
+    padding-top: 40px;
+}
+
+/* Page unique prestations */
+
+

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block body %}
+
+
+<style>
+
+    #titre_article h1{
+        text-align: center;
+        color: #8c4637;
+        font-size: 4em;
+    }
+
+    #desc_article h4{
+        text-align: center;
+        color: #8c4637;
+    }
+    
+
+    #thumbnail_prestation{
+    width: 40%;
+    height: auto;
+    border-radius: 30px;
+    border: 0.5rem solid #623227;
+    }
+
+    #contenu_prestation{
+        text-align: center;
+        color: #8c4637;
+        font-size: 1em;
+    }
+
+    .container{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+</style>
+
+
+<div class="container">
+    <div id="titre_article">
+        <h1>{{ singleArticle.title }}</h1>
+    </div>
+
+    <div id="desc_article">
+        <h4>{{ singleArticle.description }}</h4>
+    </div>
+
+
+    <img src="{{ asset('assets/img/' ~ singleArticle.picture)}}" alt="">
+
+    <br>
+
+    <div id="contenu_prestation">
+        <p>{{ singleArticle.text }}</p>
+    </div>
+</div>
+
+
+{% endblock %}

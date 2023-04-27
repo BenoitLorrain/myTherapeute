@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de compte{% endblock %}
+
+{% block body %}
+
+
+<section>
+{% if app.user %}
+    <h1 class="text-center text-muted"> Bienvenue {{app.user.firstname}} {{app.user.lastname}}</h1>
+{% endif %}
+
+    
+
+</section>
+{% endblock %}

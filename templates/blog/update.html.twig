@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier votre profil{% endblock %}
+
+{% block body %}
+<section>
+<h1 class="text-center text-muted">Modification de l'article</h1>
+    <div class="col-md-4 mx-auto">
+        <div>
+            {{form_start(form)}}
+            {{ form_widget(form) }}
+            {{form_start(form)}}
+        </div>
+        
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des articles de blog{% endblock %}
+
+{% block body %}
+
+<section>
+		<h1 class="text-center text-muted">Vos articles</h1>
+        <br>
+		<hr>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nom de l'article</th>
+					<th scope="col">Description</th>
+					<th scope="col">Texte</th>
+                    <th scope="col">Date de publication</th>
+				</tr>
+			</thead>
+			<tbody>
+        {% for article in articles %}
+          <tr>
+            <th scope="row">{{ article.id }}</th>
+            <td>{{ article.title }}</td>
+            <td>{{ article.description }}</td>
+            <td>{{ article.text }}</td>
+            <td>{{article.publishedAt | date('d-m-y')}}</td>
+            <td>
+            <a type="button" href="#" class="btn btn-danger m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Supprimer
+            </a>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Voulez-vous vraiment supprimer cet article ?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <a type="button" class="btn btn-primary" href="{{path('app_remove_article',{ id: article.id})}}">Supprimer définitivement</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+             | <a class="btn btn-warning m-2" href="#">Modifier</a></td>
+          </tr>   
+        {% endfor %}                    
+			</tbody>
+      
+		</table>
+
+	</section>
+
+{% endblock %}

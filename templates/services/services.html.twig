@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prestations{% endblock %}
+
+{% block body %}
+
+<style>
+
+    #nom_prestation h4{
+        text-align: center;
+        color: #8c4637;
+        font-size: 4em;
+    }
+
+    #thumbnail_prestation{
+    width: 40%;
+    height: auto;
+    border-radius: 30px;
+    border: 0.5rem solid #623227;
+    }
+
+    #contenu_prestation{
+        text-align: center;
+        color: #8c4637;
+        font-size: 1em;
+    }
+
+    .container{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+</style>
+
+
+<div class="container">
+    <div id="nom_prestation">
+        <h4>{{app.article.title}}</h4>
+    </div>
+
+
+    <img src="{{app.article.picture}}" alt="">
+
+    <div id="contenu_prestation">
+        <p>{{app.article.texte}}</p>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

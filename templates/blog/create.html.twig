@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'articles{% endblock %}
+
+
+{% block body %}
+
+<h1>Création d'un article</h1>
+
+{{ form_start(addArticle) }}
+{{ form_widget(addArticle) }}
+{{ form_end(addArticle) }}
+
+{% endblock %}

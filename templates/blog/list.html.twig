@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+<h1>Mes articles</h1>
+
+{% for article in articles %}
+<div id="therapie_placeholder" class="d-flex flex-direction:row">
+    <img src="{{ asset('assets/img/' ~ article.picture)}}" alt="" id="illu_therapie">
+    <div id="desc_therapie_index">
+        <h4>{{ article.title }}</h4>
+        <p>{{ article.description }}</p>
+        <div id="button_EN_SAVOIR_PLUS">                         
+            <a style="color: #F2EDE4;text-decoration:none" href="/blog/single/{{article.id}}"><i class="bi bi-arrow-left-circle"></i>   En savoir plus...</a>
+        </div>  
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}
