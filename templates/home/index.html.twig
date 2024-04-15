@@ -32,6 +32,8 @@
     <section id="prestation" style="background-color: #F2EDE4; height: 1020px;">
         <div class="container" id="section_prestations" style="display: flex; flex-direction: column; justify-content: center;">
             <h2 style="text-align: center; color: #8c4637; padding-top: 40px;">Mes prestations</h2>
+
+                    <!--
                     <div id="therapie_placeholder" class="d-flex flex-direction:row" style="display:flex; flex-direction:row; align-items: center; padding: 1.3em; border-radius: 30px;">
                             <div id="desc_therapie_index" style="padding: 10px;">
                                 <h4 style="color: #d9b391;"></h4>
@@ -41,6 +43,18 @@
                                 </div>  
                             </div>
                     </div>
+                    -->
+
+                        <div id="therapie_placeholder" class="d-flex flex-direction:row" style="display:flex; flex-direction:row; align-items: center; padding: 1.3em; border-radius: 30px;">
+                            <div id="desc_therapie_index" style="padding: 10px;">
+                                <h4 style="color: #d9b391;"></h4>
+                                <p></p>
+                                <div id="button_EN_SAVOIR_PLUS" style="color: #F2EDE4; display:flex; flex-direction:row; justify-content: space-evenly; background-color: #d9b391; border-radius: 30px; max-width: 9.4em; padding: 5px; padding-left: 10px; padding-right: 10px;" onmouseover="this.style.color='#bf895a';" onmouseout="this.style.color='#d9b391';">                         
+                                    <a style="color: #F2EDE4;text-decoration:none" href=""><i class="bi bi-arrow-left-circle"></i>   En savoir plus...</a>
+                                </div>  
+                            </div>
+                        </div>
+                    
                 <h1>Pas d'articles</h1>
 
             <div id="big_button" style="display: flex; justify-content: center; align-items: center; padding-bottom: 40px; padding-top: 20px;">
@@ -55,18 +69,28 @@
         <div class="container" id="section_prestations" style="display: flex; flex-direction: column; justify-content: center;">
             <h2 style="text-align: center; color: #F2EDE4; padding-top: 40px;">Mes derniers articles</h2>
 
+                {% set reversed_articles = articles|reverse %}
+
+                {% if reversed_articles is empty %}
+                    <h1>Aucun article à afficher.</h1>
+                {% else %}
+                {% for article in reversed_articles %}
+                    {% if loop.index <= 3 %}
                     <div id="therapie_placeholder" class="d-flex flex-direction:row" style="display:flex; flex-direction:row; align-items: center; padding: 1.3em; border-radius: 30px;">
-                            <img src="https://cdn.unenvironment.org/events/2021-03/Economia%20circular%20foto%20tema%CC%81tica.jpg?VersionId=null" alt="" id="illu_therapie" style="max-height: 12em; max-width: 18em; border-radius: 30px; border: 0.5rem solid #623227;">
+                            <img src="{{ asset('uploads/pictures/' ~ article.picture)}}" alt="" id="illu_therapie" style="max-height: 12em; max-width: 18em; border-radius: 30px; border: 0.5rem solid #623227;">
                             <div id="desc_therapie_index" style="padding: 10px;">
-                                <h4 style="color: #d9b391;"></h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis ultrices dolor, id dapibus purus venenatis non. Cras eu ultricies sapien. Donec in luctus ex, at iaculis augue. Etiam cursus ante ac tincidunt mattis. Maecenas id lectus posuere, aliquet sapien sit amet, malesuada nisi. Pellentesque vitae lacus ullamcorper nisi suscipit commodo. Praesent luctus elit sed mauris ultricies, non faucibus felis pharetra. Quisque sit amet tortor consequat, auctor sem in, gravida leo. Quisque hendrerit mauris ac tincidunt scelerisque.</p>
+                                <h4 style="color: #d9b391;">{{article.title}}</h4>
+                                <p>{{article.description}}</p>
                                 <div id="button_EN_SAVOIR_PLUS" style="color: #F2EDE4; display:flex; flex-direction:row; justify-content: space-evenly; background-color: #d9b391; border-radius: 30px; max-width: 9.4em; padding: 5px; padding-left: 10px; padding-right: 10px;" onmouseover="this.style.color='#bf895a';" onmouseout="this.style.color='#d9b391';">                         
-                                    <a style="color: #F2EDE4;text-decoration:none" href="<?php the_permalink() ?>"><i class="bi bi-arrow-left-circle"></i>   En savoir plus...</a>
+                                    <a style="color: #F2EDE4;text-decoration:none" href="/blog/single/{{article.id}}"><i class="bi bi-arrow-left-circle"></i>   En savoir plus...</a>
                                 </div>  
                             </div>
                     </div>
+                    {% endif %}
+                {% endfor %}   
+                {% endif %}     
 
-                <h1>Pas d'articles</h1>
+        </div>
 
             <div id="big_button" style="display: flex; justify-content: center; align-items: center; padding-bottom: 40px; padding-top: 20px;">
                 <a style="color: #F2EDE4;text-decoration:none; display: flex; justify-content: center; align-items: center; width: 330px; height: 60px; background-color: #8C4637; border-radius: 20px; font-size: 1.6em;" href="{{path('app_blog_list')}}">Voir tous les articles</a>
