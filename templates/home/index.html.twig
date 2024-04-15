@@ -2,82 +2,74 @@
 
 {% block title %}Accueil{% endblock %}
 
+{% block stylesheets %}
+            <link rel="stylesheet" href="{{asset('assets/style.css')}}">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+{% endblock %}
 
 {% block body %}
-
 <section class="block">
-    <section id="presentation" >
-        <h1 id="titre_presentation">BENOÎT LORRAIN</h1>
-        <h3 id="titre_presentation">Thérapeute à Paris</h3>
+    <section id="presentation" style="text-align: center; color: #8c4637; box-shadow: inset 0 0 0 1000px rgba(242,237,228,0.7);background-image: url('https://cdn.unenvironment.org/events/2021-03/Economia%20circular%20foto%20tema%CC%81tica.jpg?VersionId=null'); background-size: cover; margin-top: -70px; padding-top: 100px; padding-bottom:50px;" >
+        <h1 id="titre_presentation" style="font-size: 4em;">BENOÎT LORRAIN</h1>
+        <h3 id="titre_presentation" style="margin-top: -15px; font-size: 3em;">Thérapeute à Paris</h3>
         <br>
         <br>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend maximus augue quis aliquet.<br>Sed finibus luctus sapien sit amet venenatis. Integer placerat nibh in scelerisque vehicula.<br>Mauris porta turpis eget leo mattis posuere. Suspendisse in lectus at augue ornare venenatis et ut mi.<br>Phasellus dapibus fermentum nisl.Quisque nec nisl fermentum, commodo tellus ac, varius ex. Aenean egestas tincidunt orci, non congue sapien consequat eu.<br>Etiam rhoncus, ex at feugiat pellentesque, purus justo dapibus enim, id blandit diam nunc quis ligula. Donec ante orci, mollis vel vehicula a, faucibus non velit. Praesent pellentesque dolor a est faucibus eleifend.
+        <p style="text-align: center; font-size: 1.2em;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend maximus augue quis aliquet.<br>Sed finibus luctus sapien sit amet venenatis. Integer placerat nibh in scelerisque vehicula.<br>Mauris porta turpis eget leo mattis posuere. Suspendisse in lectus at augue ornare venenatis et ut mi.<br>Phasellus dapibus fermentum nisl.Quisque nec nisl fermentum, commodo tellus ac, varius ex. Aenean egestas tincidunt orci, non congue sapien consequat eu.<br>Etiam rhoncus, ex at feugiat pellentesque, purus justo dapibus enim, id blandit diam nunc quis ligula. Donec ante orci, mollis vel vehicula a, faucibus non velit. Praesent pellentesque dolor a est faucibus eleifend.
 
         </p>
         <br>
-        <p>Suspendisse in lectus at augue ornare venenatis et ut mi.<br>
+        <p style="text-align: center; font-size: 1.2em;">Suspendisse in lectus at augue ornare venenatis et ut mi.<br>
             Phasellus dapibus fermentum nisl. Quisque nec nisl fermentum, commodo tellus ac, varius ex.<br>
             Aenean egestas tincidunt orci, non congue sapien consequat eu.</p>
         <br>
-        <div id="QUI_SUIS_JE">
-            <a style="color: #F2EDE4;text-decoration:none" href="{{ path('app_about_me') }}">Qui suis-je ?</a>
+        <div id="QUI_SUIS_JE" style="display: flex; justify-content: center; align-items: center;">
+            <a style="color: #F2EDE4;text-decoration:none; display: flex; justify-content: center;align-items: center; padding: auto; width: 330px; height: 60px; background-color: #8C4637; border-radius: 20px; font-size: 1.6em;" onmouseover="this.style.color='#8C4637';" onmouseout="this.style.color='#623227';"; href="{{ path('app_about_me') }}">Qui suis-je ?</a>
         </div>
         <br>
-        <i class="bi bi-arrow-down-circle"></i>
+        <i class="bi bi-arrow-down-circle" style="text-align: center; font-size: 5em;"></i>
     </section>
 
-    <section id="prestation">
-        <div class="container" id="section_prestations">
-            <h2>Mes prestations</h2>
-
-            <?php if (have_posts()): ?>
-                <?php while(have_posts()): the_post();?>
-                    <div id="therapie_placeholder" class="d-flex flex-direction:row">
-                        <?php the_post_thumbnail('post-thumbnail', ['id' => 'illu_therapie', 'alt' => '']) ?>
-                            <div id="desc_therapie_index">
-                                <h4><?php the_title() ?></h4>
-                                <p><?php the_excerpt() ?></p>
-                                <div id="button_EN_SAVOIR_PLUS">                         
-                                    <a style="color: #F2EDE4;text-decoration:none" href="<?php the_permalink() ?>"><i class="bi bi-arrow-left-circle"></i>   En savoir plus...</a>
+    <section id="prestation" style="background-color: #F2EDE4; height: 1020px;">
+        <div class="container" id="section_prestations" style="display: flex; flex-direction: column; justify-content: center;">
+            <h2 style="text-align: center; color: #8c4637; padding-top: 40px;">Mes prestations</h2>
+                    <div id="therapie_placeholder" class="d-flex flex-direction:row" style="display:flex; flex-direction:row; align-items: center; padding: 1.3em; border-radius: 30px;">
+                            <div id="desc_therapie_index" style="padding: 10px;">
+                                <h4 style="color: #d9b391;"></h4>
+                                <p></p>
+                                <div id="button_EN_SAVOIR_PLUS" style="color: #F2EDE4; display:flex; flex-direction:row; justify-content: space-evenly; background-color: #d9b391; border-radius: 30px; max-width: 9.4em; padding: 5px; padding-left: 10px; padding-right: 10px;" onmouseover="this.style.color='#bf895a';" onmouseout="this.style.color='#d9b391';">                         
+                                    <a style="color: #F2EDE4;text-decoration:none" href=""><i class="bi bi-arrow-left-circle"></i>   En savoir plus...</a>
                                 </div>  
                             </div>
                     </div>
-                <?php endwhile;?>
-            <?php else: ?>
                 <h1>Pas d'articles</h1>
-            <? endif; ?>
 
-            <div id="big_button">
-                <a style="color: #F2EDE4;text-decoration:none" href="http://localhost:10016/liste-prestation/">Voir toutes les prestations</a>
+            <div id="big_button" style="display: flex; justify-content: center; align-items: center; padding-bottom: 40px; padding-top: 20px;">
+                <a style="color: #F2EDE4;text-decoration:none; display: flex; justify-content: center; align-items: center; width: 330px; height: 60px; background-color: #8C4637; border-radius: 20px; font-size: 1.6em;" href="">Voir toutes les prestations</a>
             </div>
 
 
         </div>
     </section>
 
-    <section id="derniers_articles">
-        <div class="container" id="section_prestations">
-            <h2>Mes derniers articles</h2>
+    <section id="derniers_articles" style="background-color: #BF895A; height: 1020px;">
+        <div class="container" id="section_prestations" style="display: flex; flex-direction: column; justify-content: center;">
+            <h2 style="text-align: center; color: #F2EDE4; padding-top: 40px;">Mes derniers articles</h2>
 
-            <?php if (have_posts()): ?>
-                <?php while(have_posts()): the_post();?>
-                    <div id="therapie_placeholder" class="d-flex flex-direction:row">
-                            <img src="https://cdn.unenvironment.org/events/2021-03/Economia%20circular%20foto%20tema%CC%81tica.jpg?VersionId=null" alt="" id="illu_therapie">
-                            <div id="desc_therapie_index">
-                                <h4><?php the_title() ?></h4>
+                    <div id="therapie_placeholder" class="d-flex flex-direction:row" style="display:flex; flex-direction:row; align-items: center; padding: 1.3em; border-radius: 30px;">
+                            <img src="https://cdn.unenvironment.org/events/2021-03/Economia%20circular%20foto%20tema%CC%81tica.jpg?VersionId=null" alt="" id="illu_therapie" style="max-height: 12em; max-width: 18em; border-radius: 30px; border: 0.5rem solid #623227;">
+                            <div id="desc_therapie_index" style="padding: 10px;">
+                                <h4 style="color: #d9b391;"></h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis ultrices dolor, id dapibus purus venenatis non. Cras eu ultricies sapien. Donec in luctus ex, at iaculis augue. Etiam cursus ante ac tincidunt mattis. Maecenas id lectus posuere, aliquet sapien sit amet, malesuada nisi. Pellentesque vitae lacus ullamcorper nisi suscipit commodo. Praesent luctus elit sed mauris ultricies, non faucibus felis pharetra. Quisque sit amet tortor consequat, auctor sem in, gravida leo. Quisque hendrerit mauris ac tincidunt scelerisque.</p>
-                                <div id="button_EN_SAVOIR_PLUS">                         
+                                <div id="button_EN_SAVOIR_PLUS" style="color: #F2EDE4; display:flex; flex-direction:row; justify-content: space-evenly; background-color: #d9b391; border-radius: 30px; max-width: 9.4em; padding: 5px; padding-left: 10px; padding-right: 10px;" onmouseover="this.style.color='#bf895a';" onmouseout="this.style.color='#d9b391';">                         
                                     <a style="color: #F2EDE4;text-decoration:none" href="<?php the_permalink() ?>"><i class="bi bi-arrow-left-circle"></i>   En savoir plus...</a>
                                 </div>  
                             </div>
                     </div>
-                <?php endwhile;?>
-            <?php else: ?>
-                <h1>Pas d'articles</h1>
-            <? endif; ?>
 
-            <div id="big_button">
-                <a style="color: #F2EDE4;text-decoration:none" href="{{path('app_blog_list')}}">Voir tous les articles</a>
+                <h1>Pas d'articles</h1>
+
+            <div id="big_button" style="display: flex; justify-content: center; align-items: center; padding-bottom: 40px; padding-top: 20px;">
+                <a style="color: #F2EDE4;text-decoration:none; display: flex; justify-content: center; align-items: center; width: 330px; height: 60px; background-color: #8C4637; border-radius: 20px; font-size: 1.6em;" href="{{path('app_blog_list')}}">Voir tous les articles</a>
             </div>
 
 
