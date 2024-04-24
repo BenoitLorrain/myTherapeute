@@ -27,14 +27,16 @@ class UserController extends AbstractController
         $singleUser = $this->manager->getRepository(User::class)->findBy(['id' => $id]);
         $this->manager->remove($singleUser[0]);
         $this->manager->flush();
+        $this->addFlash('success', "L'utilisateur a bien été supprimé !");
 
-        return $this->redirectToRoute('app_dashboard');
+        return $this->redirectToRoute('app_dashboard_user');
     }
 
-    
+    /*
     /**
      * @Route("/user/update/{id}", name="app_edit_user")
      */
+    /*
     public function updateUser($id, Request $request)
     {
 
@@ -64,5 +66,6 @@ class UserController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+    */
 }
 

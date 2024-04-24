@@ -34,17 +34,27 @@
 
 </style>
 
-
 <div class="container">
-    <div id="nom_prestation">
-        <h4>{{app.article.title}}</h4>
+    <div id="titre_article">
+        <h1>{{ singleService.title }}</h1>
+    </div>
+
+    <div id="desc_article">
+        <h4>{{ singleService.price }} €</h4>
+        <h4>{{ singleService.duration }} minutes</h4>
+    </div>
+
+    <div id="desc_article">
+        <h4>{{ singleService.description }}</h4>
     </div>
 
 
-    <img src="{{app.article.picture}}" alt="">
+    <img src="{{ asset('uploads/pictures/' ~ singleService.picture)}}" alt="">
+
+    <br>
 
     <div id="contenu_prestation">
-        <p>{{app.article.texte}}</p>
+        <p>{{ singleService.content }}</p>
     </div>
 </div>
 

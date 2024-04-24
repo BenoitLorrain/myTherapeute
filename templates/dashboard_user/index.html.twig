@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des utilisateurs{% endblock %}
+
+{% block body %}
+<section>
+		<h1 class="text-center text-muted">Les utilisateurs</h1>
+        <br>
+		<hr>
+		<table class="table">
+    <h2>Administrateurs</h2>
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">E-mail de l'utilisateur</th>
+					<th scope="col">NOM Prénom</th>
+					<th scope="col">N° de téléphone</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Date de création</th>
+				</tr>
+			</thead>
+			<tbody>
+      
+        {% for user in users %}
+          {% if 'ROLE_ADMIN' in user.roles %}
+            <tr>
+              <th scope="row">{{ user.id }}</th>
+              <td>{{ user.email }}</td>
+              <td><span style="text-transform:uppercase">{{ user.lastname }}</span> {{ user.firstname }}</td>
+              <td>{{ user.phone }}</td>
+              <td>{{ user.address }} {{ user.city }} {{ user.zipCode }}</td>
+              <td>{{user.createdAt | date('d-m-y')}}</td>
+              
+              <td>
+                <a type="button" href="#" class="btn btn-danger m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Supprimer
+                </a>
+                
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Voulez-vous vraiment supprimer cet article ?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <a type="button" class="btn btn-primary" href="{{path('app_remove_user',{ id: user.id})}}">Supprimer définitivement</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr> 
+          {% endif %}
+        {% endfor %}                    
+			</tbody>
+      
+		</table>
+
+    <br>
+
+    <table class="table">
+    <h2>Utilisateurs</h2>
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">E-mail de l'utilisateur</th>
+					<th scope="col">NOM Prénom</th>
+					<th scope="col">N° de téléphone</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Date de création</th>
+				</tr>
+			</thead>
+			<tbody>
+        {% for user in users %}
+          {% if 'ROLE_ADMIN' not in user.roles %}
+            <tr>
+              <th scope="row">{{ user.id }}</th>
+              <td>{{ user.email }}</td>
+              <td><span style="text-transform:uppercase">{{ user.lastname }}</span> {{ user.firstname }}</td>
+              <td>{{ user.phone }}</td>
+              <td>{{ user.address }} {{ user.city }} {{ user.zipCode }}</td>
+              <td>{{user.createdAt | date('d-m-y')}}</td>
+              
+              <td>
+                <a type="button" href="#" class="btn btn-danger m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Supprimer
+                </a>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Voulez-vous vraiment supprimer cet article ?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <a type="button" class="btn btn-primary" href="{{path('app_remove_user',{ id: user.id})}}">Supprimer définitivement</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr> 
+          {% endif %}
+        {% endfor %}                    
+			</tbody>
+      
+		</table>
+
+</section>
+{% endblock %}

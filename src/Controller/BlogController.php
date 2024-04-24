@@ -119,55 +119,42 @@ class BlogController extends AbstractController
     */
     public function updateArticle($id, Request $request)
     {
-        $entityManager = $this->doctrine->getManager();
-        $singleArticle = $entityManager->getRepository(Article::class)->findBy(['id' => $id]);
-        $singleArticle[0]->setPicture(null);
 
-        $form = $this->createForm(ArticleType::class, $singleArticle[0]);
+        $entityManager = $this->doctrine->getManager();
+        $singleArticle = $entityManager->getRepository(Article::class)->find($id);
+
+        if (!$singleArticle) {
+            throw $this->createNotFoundException('Article non trouvée pour l\'id '.$id);
+        }
+
+        $form = $this->createForm(ArticleType::class, $singleArticle);
         $form->handleRequest($request);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($singleArticle[0]);
+
+            $pictureFile = $form->get('picture')->getData();
+
+            if ($pictureFile) {
+                $newFilename = uniqid().'.'.$pictureFile->guessExtension();
+                $pictureFile->move(
+                    $this->getParameter('pictures_directory'),
+                    $newFilename
+                );
+
+                $singleArticle->setPicture($newFilename);
+            }
+
+            $entityManager->persist($singleArticle);
             $entityManager->flush();
             return $this->redirectToRoute('app_dashboard_article');
         }
 
-
         return $this->render('blog/update.html.twig', [
-            'article' => $singleArticle[0],
+            'article' => $singleArticle,
             'form' => $form->createView()
         ]);
 
     }
-    /*
-    {
-        dump($article);
-        if(!$article)
-            {
-                $article = new Article;
-            }
-        $form = $this->createForm(ArticleType::class, $article);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid())
-        {
-            if(!$article->getId())
-            {
-                $article->setCreatedAt(new \DateTime);
-            }
-
-            $manager->persist($article);
-            $manager->flush();
-            $this->addFlash('success', 'Les modifications ont bien été enregistrés !');
-            return $this->redirectToRoute('admin_articles');
-        }
-        return $this->render('blog/update.html.twig', [
-        'formEdit' => $form->createView(),
-        'editMode' => $article->getId() !== null
-        ]);
-    }
-    */
-    
-
 
 }

@@ -50,7 +50,7 @@ class Service
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_at;
+    private $publishedAt;
 
     public function getId(): ?int
     {
@@ -129,14 +129,14 @@ class Service
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getPublishedAt(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->publishedAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): self
+    public function setPublishedAt(\DateTimeInterface $publishedAt): self
     {
-        $this->created_at = $created_at;
+        $this->publishedAt = $publishedAt;
 
         return $this;
     }
